@@ -2,7 +2,7 @@
 
 Repozytorium `nn_algorithms` zawiera kilka implementacji sieci neuronowych w Pythonie, realizowanych przy użyciu różnych podejść:
 
-- **nn_from_scratch**: Implementacja sieci neuronowych od podstaw, bez użycia gotowych bibliotek.
+- **nn**: Implementacja sieci neuronowych od podstaw, bez użycia gotowych bibliotek.
 - **pytorch**: Implementacja sieci neuronowych z wykorzystaniem biblioteki [PyTorch](https://pytorch.org/).
 - **tensorflow**: Implementacja sieci neuronowych z wykorzystaniem [TensorFlow](https://www.tensorflow.org/).
 
@@ -13,14 +13,13 @@ Repozytorium `nn_algorithms` zawiera kilka implementacji sieci neuronowych w Pyt
 - [Wymagania](#wymagania)
 - [Instalacja](#instalacja)
 - [Uruchomienie](#uruchomienie)
-- [Przykłady użycia](#przykłady-użycia)
-- [Licencja](#licencja)
+
 
 ## Opis
 
 W repozytorium znajdują się trzy podejścia do budowy sieci neuronowych:
 
-1. **nn_from_scratch**:  
+1. **nn**:  
    W tej części projektu implementujemy sieć neuronową od zera, korzystając jedynie z podstawowych funkcji Pythona oraz bibliotek standardowych (np. `math`, `numpy` – jeśli dopuszczasz) **bez** gotowych frameworków ML. To podejście umożliwia lepsze zrozumienie mechanizmów działania sieci.
 
 2. **pytorch**:  
