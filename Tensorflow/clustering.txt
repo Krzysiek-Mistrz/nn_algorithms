@@ -1,0 +1,138 @@
+clustering works by assigning data points to clusters (special 
+points generated randomly across data space, there are as many 
+clusters as there are class to which you want to group the data)
+(kinda groups like), by using metrics like manhatan metric or any 
+other (f.e. distant metric). after assigning all the points, you 
+basically assign new place for your clusters, amking them closer 
+to their desired group. clustering i mean is clustering in the 
+sense of k-means algorithm (utilizes manhatan or dist metrics)
+
+hidden markov models is a finite set of states, each of which is 
+associated with a propability distribution. Transitions among states 
+are governed by a set of propabilities called transition propabilities.
+F.e. states can be hot day and cold day in the weather forecast, providing 
+f.e. situation when we know the propability of what type of day will 
+be the next day if current is f.e. hot day. the most important thing 
+however in markov models are so called observations (mean temp: 20, 
+hot: 25, cold: 15) and transition propabilities (propability 
+of transitioning to diff kind of day).
+
+NNs can be thougt as magic box to which you give some input and hope 
+to get get meaningful output. Its kinda function. If we have for 
+example 28x28 pixel image then we would need 28*28 inputs to our 
+neural network. if we have for example 2 possible outputs then 
+we would have 2 output neurons. What we get by summing all the 
+neurons outputs is 1, so its basically a propbility distribution. 
+Between input and output layers you also do have hidden layers. 
+When all the neurons in hidden layers are connected to all possible 
+neurons from prev layer then its called densly connected nn. 
+Each connection between neuron has associated weight, and also 
+each neuron can have bias. N = sum(w_i*x_i) + b. To make output 
+to be between certain range we use activation values. We can use 
+f.e. relu, tanh, sigmoid. We apply activation function to 
+every neuron. Loss function on the other hand calculates how close 
+our output is from expected output, examples of loss functions are mean 
+squared error, hinge loss. gradient descent however tells us what 
+direction to follow to get to the global minimum (minimize loss function). and after finding 
+out the direction the backropagation comes in to update these weights 
+& biases. Optimizer simply means the function that implements backpropagation algorithm. 
+There are a few common ones: GD, SGD, Mini-Batch gradient descent, momentum, 
+nesterov accelerated gradient.
+
+Deep computer vision is basically used for image classification 
+and object detection / recognition using deep computer vision with 
+cnn. The goal of our convolutional neural network will be to 
+classify and detect images or objects within the image.
+Image data consists of 3 dimensions: height, width and color 
+channels. F.e. image with three channels is made up of red, 
+green and blue pixels, and for each pixel we have value from 0-255.
+convolutional neural network is kinda diffrent than dense neural network 
+which we utilized before. I mean dense nn look at the image when 
+classifying globally (it looks for certain features in certain 
+parts of the image globally) in opposition to cnns, which look 
+at these fetures locally it doesnt matter if this feature will 
+be on the left or right of the image cause cnns learns them locally. 
+convolutional layer feedback to us output feature map. Also cnns in 
+opposition to deep nns give us output as an output features map. 
+We get these output features by utilizing filters (many at 
+once 32 or 64 by default) to try to look in our image for 
+specific features). Feature map is essentialy then a dot product 
+between outr filter and certain part of the image resulting in 
+smaller feature map for each of the filters.So after each cnn 
+layer we will have more complicated combinations of filters. 
+sometimes we also want the output feature map to be the same 
+size as our original image. To do this we add padding 
+(additional rows and cols to our image), which help us detect 
+features on the edges f.e. Now lets talk about pooling. So 
+essentialy pooling is just taking specific values from the 
+output feature map by utilizing min, max or average. It returns 
+2 times smaller feature map. Pooling is utilized to tell us about 
+specific feature presence in the map. After all of these cnns layers 
+we utilize some kinda dense classifier which detects certain 
+combinations of features and assign them to certain classes.
+Also if we use very small amount oif data its very difficult to 
+train decent CNN from that. Data augmentation f.e. hepls us a lot 
+in this kinda situation. We can do hella lot of operations on 
+images to make more of them and then send them to our model. Data 
+augmentation is actually very usefull cause we can then just better 
+generalize our model. Training model on outr own can be expensive 
+(time and computational resources). However it dont need to be this 
+way. We can use f.e. pretrained cnns and only fine tune the last 
+few layers.
+NLP is a field that deals with trying to understand human language 
+Recurrent neural networks are mainly utilized in nlp. bag of words - 
+each word is connected to certain integer and after analizing the 
+sentence if any of these words appear in this sentence its collected 
+to this bag of words (integer connected to this word is collected 
+to bag). however this approach of assigning certain words certain 
+number doesnt solve the issue of latrge dictionaris because to 
+tell whether the context of the message is positive or negative we 
+should know the groups of integers and these words indexes couldnt 
+be very far away. only bag of words is not sufficient to complete the whole 
+sentiment analysis. Therefore we have to feed this bag of words to 
+nn. word embeddings - each word is represented using a vector 
+which components represent a group to which this vector belongs to. 
+word embeddings is actually a layer which we will add to our model. 
+Model tries to based on content of the sentence and position of 
+each word determine what each word means and then encodes each word 
+to its vector. The main diff between dense nn or cnn and rnn is that 
+rnn contain internal loop. rnn doesnt process entire data at once. 
+it processes it at one step (word) at diff timesteps and based on 
+all previous words it read it tries to predict the meaning of next 
+word in the sentence. so the actual sequence is like that: read first word, 
+output the meaning of the sentence based on this one word, read another 
+word and again output the meaning of the sentence based on the first 
+one and the second one, and so on.... You may say the rnn is actually 
+building a context for your sentences. all of these internal iterations 
+(understanding context) between each word is actually called a layer in rnn 
+This approach of building context have one disadvantage, namely it 
+loosing the maining of prev words in the sentence if the sentence is 
+basically too long. Another type of layer is lstm in which we add a 
+component which keeps track of internal state. This component help us 
+to retrieve the output of any layer in any time when needed. and also... 
+LSTM stands for long short term memory.
+
+Reinforcement learning - instead of feeding our model with a bunch of 
+exampes we let the agent come up with those examples by itself, and we 
+do it by letting the agent explore the env by itself. basic example of 
+reinf learning is playin a game. by playing we laern how to play. 
+environment - what our agent will explore. (game env)
+agent - entity that is exploring the env. our agent will explore and 
+take actions within env.
+state - simply tells us about status of the agent. (pos in game)
+action - interaction between agent and env (moving to left, jumping, ...)
+reward - every action agent takes will result in a reward of some magnitude.
+agent is trying to maximize the reward.
+Q-learning is a method to implement reinformcement learning. Its based 
+on creating matrix which rows = states and columns = actions. cells are 
+actually just a value of reward when applied this action in certain state. 
+There are 2 ways that our agent can decide on which action to take while learning:
+randomly picking a valid action or using the current q-table to fid the 
+best action. 
+The formula for updating q-table after each action is like this:
+Q[state, action] = Q[state, action] + alfa * (reward + gamma * max(Q[newState, :]) 
+- Q[state, action])
+Where alfa is learning rate (ensures we dont update q-table to much), and 
+gamma stands for discount factor, which is essentialy trying to define good balance 
+between reward in curr state and reward in future state. when its higher 
+then we will look more towards the future reward and less towards curr rewards.
